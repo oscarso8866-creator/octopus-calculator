@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>八達通交通津貼計算器</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; padding: 20px; text-align: center; background-color: #f9f9f9; }
+        .container { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        input, button { padding: 12px; font-size: 16px; margin: 10px 0; width: 100%; box-sizing: border-box; border-radius: 5px; border: 1px solid #ccc; }
+        button { background-color: #007bff; color: white; border: none; cursor: pointer; font-weight: bold; }
+        button:hover { background-color: #0056b3; }
+        #result { margin: 20px 0; font-size: 24px; font-weight: bold; color: #007bff; }
+        .content { text-align: left; margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; color: #555; line-height: 1.6; }
+        ul { padding-left: 20px; margin: 5px 0; }
+        li { margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>八達通交通津貼計算器</h2>
+        
+        <!-- 輸入框 -->
+        <input type="number" id="inputNumber" placeholder="請輸入交通津貼金額...">
+        
+        <!-- 按鈕 -->
+        <button onclick="calculate()">立即計算</button>
+
+        <!-- 顯示結果 -->
+        <div id="result"></div>
+
+        <div class="content">
+            <h3>關於八達通交通津貼計算器</h3>
+            <p>輸入交通津貼的數字即可計算出你今個月總共用左幾多錢搭車。</p>
+            
+            <!-- 已更新為交通津貼計劃注意事項 -->
+            <h3>交通津貼計劃注意事項</h3>
+            <ul>
+                <li><strong>1.</strong> 計劃無須預先登記，但必須使用八達通乘車方可享有補貼。</li>
+                <li><strong>2.</strong> 計劃涵蓋港鐵、專營巴士、綠色專線小巴、渡輪、電車，及部分紅色小巴、邨巴、街渡和員工巴士。</li>
+                <li><strong>3.</strong> 最早每月 16 日起可領取上月津貼，地點包括港鐵站、便利店、八達通手機應用程式等。</li>
+                <li><strong>4.</strong> 領取補貼限期最遲為 3 個月，逾時後無法領取。</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // 核心計算功能
+        function calculate() {
+            const inputVal = parseFloat(document.getElementById('inputNumber').value);
+            
+            if (isNaN(inputVal)) {
+                document.getElementById('result').innerText = "❌ 請先輸入數字！";
+                return;
+            }
+
+            // 公式：輸入數字 * 3 + 500
+            const outputVal = (inputVal * 3) + 500;
+
+            document.getElementById('result').innerText = "計算結果：" + outputVal + " 元";
+        }
+    </script>
+
+</body>
+</html>
